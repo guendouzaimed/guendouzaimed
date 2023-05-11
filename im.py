@@ -12,11 +12,9 @@ i = 1
 def set_wallpaper(name):
     os.system("xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-3/workspace0/last-image --set {name}")
 
-while 1:
-    #get random line
-    with open('.quran.txt') as f:
-        lines = f.readlines()
-    text = random.choice(lines)
+
+with open('.quran.txt') as f:
+  for text in f:
     wait_time = len(text) * 0.2
 
     # create a tkinter window and hide it
@@ -31,7 +29,8 @@ while 1:
     image = Image.new('RGB', (screen_width, screen_height), color='black')
 
     # define the font and maximum width of each line
-    font = ImageFont.truetype('quran.ttf', size=36)
+    
+    font = ImageFont.truetype('quran.otf', size=36)
     max_width = screen_width - 700  # adjust as needed
 
     # wrap the text into lines based on the maximum width
